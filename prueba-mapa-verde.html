@@ -1,17 +1,11 @@
 <!doctype html>
-<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Prueba del mapa de túneles</title>
-<style>
-body{margin:0;background:#050505;color:#d9d4c7;font-family:Georgia,"Times New Roman",serif;display:flex;flex-wrap:wrap;gap:24px;justify-content:center;padding:24px}
-.mapa{width:min(420px,92vw)}
-.mapa svg{width:100%;height:auto;display:block}
-.panel{width:min(300px,92vw);display:flex;flex-direction:column;gap:10px;align-self:flex-start}
-button{background:#14130f;color:#d9d4c7;border:1px solid #5b584e;padding:10px 12px;font:inherit;text-align:left;cursor:pointer}
-button[aria-pressed="true"]{background:#2b2718;border-color:#ffe9b0}
-button:focus-visible{outline:2px solid #ffe9b0;outline-offset:2px}
-label{display:flex;gap:8px;align-items:center;margin-top:6px}
-p{margin:0 0 6px;line-height:1.5}
-</style></head><body>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Prueba del mapa de túneles</title>
+  <link rel="stylesheet" href="estilo.css">
+</head><body>
 <div class="mapa"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1536" class="envejecido" data-encendidos="" role="img" aria-label="Plano de la red de túneles bajo la facultad">
 <title>Red de túneles bajo la facultad</title>
 <!--
@@ -30,7 +24,7 @@ p{margin:0 0 6px;line-height:1.5}
 </filter>
 </defs>
 <style>
-svg{--apagado:.05}
+svg{--apagado:.03}
 [data-nodo]{opacity:var(--apagado);transition:opacity 1.6s ease,filter 1.6s ease}
 [data-nodo].i{opacity:0}
 svg[data-encendidos~="1"] [data-nodo="1"]{opacity:1}
