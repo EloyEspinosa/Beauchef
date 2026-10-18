@@ -1,14 +1,19 @@
 <!doctype html>
 <html lang="es">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Prueba del mapa de túneles</title>
+  <title>N0-DC/FC</title>
   <link rel="stylesheet" href="estilo.css">
-</head><body>
-<div class="mapa"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1536" class="envejecido" data-encendidos="" role="img" aria-label="Plano de la red de túneles bajo la facultad">
-<title>Red de túneles bajo la facultad</title>
-<!--
+</head>
+
+<body>
+  <div class="mapa">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1536" class="envejecido" data-encendidos="" role="img"
+      aria-label="Plano de la red de túneles bajo la facultad">
+      <title>IMG00-PLN/BCHF</title>
+      <!--
   CÓMO ENCENDER NODOS
   Basta con escribir los números en el atributo del <svg>, separados por espacios:
     <svg data-encendidos="1 3"> ... </svg>   (JS: svg.dataset.encendidos = "1 3")
@@ -16,72 +21,276 @@
   Estilo de plano antiguo: quitar la clase "envejecido" del <svg> lo desactiva.
   Nivel de oscuridad inicial: cambiar la variable CSS apagado (0 = invisible).
 -->
-<defs>
-<filter id="envejecido" x="-2%" y="-2%" width="104%" height="104%">
-<feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="7" result="r"/>
-<feDisplacementMap in="SourceGraphic" in2="r" scale="3" xChannelSelector="R" yChannelSelector="G" result="d"/>
-<feGaussianBlur in="d" stdDeviation="1.1"/>
-</filter>
-</defs>
-<style>
-svg{--apagado:.03}
-[data-nodo]{opacity:var(--apagado);transition:opacity 1.6s ease,filter 1.6s ease}
-[data-nodo].i{opacity:0}
-svg[data-encendidos~="1"] [data-nodo="1"]{opacity:1}
-svg[data-encendidos~="1"] [data-nodo="1"].o,svg[data-encendidos~="1"] [data-nodo="1"].c{filter:drop-shadow(0 0 5px rgba(255,235,185,.55))}
-svg[data-encendidos~="2"] [data-nodo="2"]{opacity:1}
-svg[data-encendidos~="2"] [data-nodo="2"].o,svg[data-encendidos~="2"] [data-nodo="2"].c{filter:drop-shadow(0 0 5px rgba(255,235,185,.55))}
-svg[data-encendidos~="3"] [data-nodo="3"]{opacity:1}
-svg[data-encendidos~="3"] [data-nodo="3"].o,svg[data-encendidos~="3"] [data-nodo="3"].c{filter:drop-shadow(0 0 5px rgba(255,235,185,.55))}
-svg[data-encendidos~="4"] [data-nodo="4"]{opacity:1}
-svg[data-encendidos~="4"] [data-nodo="4"].o,svg[data-encendidos~="4"] [data-nodo="4"].c{filter:drop-shadow(0 0 5px rgba(255,235,185,.55))}
-svg[data-encendidos~="5"] [data-nodo="5"]{opacity:1}
-svg[data-encendidos~="5"] [data-nodo="5"].o,svg[data-encendidos~="5"] [data-nodo="5"].c{filter:drop-shadow(0 0 5px rgba(255,235,185,.55))}
-/* Cuando los cinco nodos están encendidos, las líneas pasan a tonos verdes. */
-svg[data-encendidos~="1"][data-encendidos~="2"][data-encendidos~="3"][data-encendidos~="4"][data-encendidos~="5"] #facultad{stroke:#a8f0b5}
-svg[data-encendidos~="1"][data-encendidos~="2"][data-encendidos~="3"][data-encendidos~="4"][data-encendidos~="5"] #tuneles [stroke="#d9d4c7"]{stroke:#35e879!important}
-svg.envejecido #facultad,svg.envejecido #tuneles{filter:url(#envejecido)}
-#facultad{opacity:.55}
-#luz-entrada{animation:pulso 2.6s ease-in-out infinite}
-@keyframes pulso{0%,100%{opacity:.5}50%{opacity:1}}
-@media (prefers-reduced-motion:reduce){#luz-entrada{animation:none}[data-nodo]{transition:none}}
-</style>
-<rect width="1024" height="1536" fill="#050505"/>
-<g id="facultad" fill="none" stroke="#7c7a72" stroke-width="2.2" stroke-linejoin="round">
-<path d="M45,72 L262,72 L262,120 L250,120 L250,242 L682,242 L682,65 L960,62 L960,470 L872,470 L872,165 L766,165 L766,375 L682,375 L682,322 L552,322 L552,565 L447,565 L447,322 L404,322 L303,328 L300,340 L210,347 L210,362 L186,364 A40,40 0 0 1 107,364 L84,362 L84,346 L45,346 L50,303 L53,118 L45,118 Z"/>
-<path d="M404,242 L404,322"/>
-<path d="M385,90 L583,90 L583,217 L515,217 L515,170 L455,170 L455,217 L385,217 Z"/>
-<path d="M247,445 L380,445 L380,562 L408,578 L408,728 L380,740 L380,780 L305,783 L303,803 Q230,822 170,827 Q125,825 123,790 L123,774 L100,772 L100,700 L72,700 L72,600 L100,598 L100,520 L130,517 L130,485 L222,480 L222,498 L247,498 Z"/>
-<path d="M606,566 L752,566 L752,688 L865,688 L865,566 L958,563 L958,862 L865,862 L865,775 L606,775 Z"/>
-<path d="M427,826 L571,826 L571,886 L588,890 L636,940 L636,975 L590,1020 L590,1078 L550,1078 L550,1062 L442,1062 L442,1078 L402,1078 L402,1020 L358,975 L358,940 L408,890 L427,886 Z"/>
-<path d="M112,918 L195,918 L195,1010 L262,1010 L262,1076 A47,47 0 0 1 262,1168 L262,1215 L195,1215 L195,1312 L112,1312 L112,1215 L48,1215 L48,1012 L112,1010 Z"/>
-<path d="M800,918 L888,918 L888,1010 L952,1010 L952,1215 L888,1215 L888,1312 L800,1312 L800,1215 L738,1215 L738,1168 A47,47 0 0 1 738,1076 L738,1010 L800,1010 Z"/>
-<path d="M110,1360 L258,1360 L258,1398 L487,1398 L487,1385 L411,1385 L411,1337 L487,1337 L487,1323 L528,1323 L528,1337 L606,1337 L606,1385 L528,1385 L528,1398 L755,1398 L755,1360 L905,1360 L905,1495 L110,1495 Z"/>
-</g>
-<g id="tuneles">
-<g id="paredes"><path class="o" data-nodo="1" d="M543,950 L595,950 L595,1040 L820,1040 L820,1075" fill="none" stroke="#d9d4c7" stroke-width="26"/><path class="o" data-nodo="1" d="M820,1155 L820,1195" fill="none" stroke="#d9d4c7" stroke-width="26"/><path class="o" data-nodo="2" d="M451,950 L400,950 L400,1040 L180,1040 L180,1075" fill="none" stroke="#d9d4c7" stroke-width="26"/><path class="o" data-nodo="2" d="M180,1155 L180,1195" fill="none" stroke="#d9d4c7" stroke-width="26"/><path class="o" data-nodo="4" d="M497,904 L497,855 L300,855 L300,740" fill="none" stroke="#d9d4c7" stroke-width="26"/><path class="o" data-nodo="4" d="M300,644 L300,605" fill="none" stroke="#d9d4c7" stroke-width="26"/><path class="o" data-nodo="5" d="M497,996 L497,1248" fill="none" stroke="#d9d4c7" stroke-width="26"/><path class="o" data-nodo="5" d="M497,1336 L497,1390" fill="none" stroke="#d9d4c7" stroke-width="26"/></g>
-<g id="suelo"><path class="i" data-nodo="1" d="M543,950 L595,950 L595,1040 L820,1040 L820,1075" fill="none" stroke="#000" stroke-width="18"/><path class="i" data-nodo="1" d="M820,1155 L820,1195" fill="none" stroke="#000" stroke-width="18"/><path class="i" data-nodo="2" d="M451,950 L400,950 L400,1040 L180,1040 L180,1075" fill="none" stroke="#000" stroke-width="18"/><path class="i" data-nodo="2" d="M180,1155 L180,1195" fill="none" stroke="#000" stroke-width="18"/><path class="i" data-nodo="4" d="M497,904 L497,855 L300,855 L300,740" fill="none" stroke="#000" stroke-width="18"/><path class="i" data-nodo="4" d="M300,644 L300,605" fill="none" stroke="#000" stroke-width="18"/><path class="i" data-nodo="5" d="M497,996 L497,1248" fill="none" stroke="#000" stroke-width="18"/><path class="i" data-nodo="5" d="M497,1336 L497,1390" fill="none" stroke="#000" stroke-width="18"/></g>
-<g id="camaras"><g class="c" data-nodo="1"><circle cx="820" cy="1115" r="46" fill="#000" stroke="#d9d4c7" stroke-width="4"/><circle cx="820" cy="1115" r="38" fill="none" stroke="#d9d4c7" stroke-width="1.4" opacity=".7"/></g><g class="c" data-nodo="1"><rect x="788" y="1195" width="64" height="84" fill="#000" stroke="#d9d4c7" stroke-width="4"/><g stroke="#d9d4c7" stroke-width="1.6"><line x1="795" x2="845" y1="1271" y2="1271"/><line x1="795" x2="845" y1="1264" y2="1264"/><line x1="795" x2="845" y1="1257" y2="1257"/><line x1="795" x2="845" y1="1250" y2="1250"/><line x1="795" x2="845" y1="1243" y2="1243"/><line x1="795" x2="845" y1="1236" y2="1236"/></g></g><g class="c" data-nodo="2"><circle cx="180" cy="1115" r="46" fill="#000" stroke="#d9d4c7" stroke-width="4"/><circle cx="180" cy="1115" r="38" fill="none" stroke="#d9d4c7" stroke-width="1.4" opacity=".7"/></g><g class="c" data-nodo="2"><rect x="148" y="1195" width="64" height="84" fill="#000" stroke="#d9d4c7" stroke-width="4"/><g stroke="#d9d4c7" stroke-width="1.6"><line x1="155" x2="205" y1="1271" y2="1271"/><line x1="155" x2="205" y1="1264" y2="1264"/><line x1="155" x2="205" y1="1257" y2="1257"/><line x1="155" x2="205" y1="1250" y2="1250"/><line x1="155" x2="205" y1="1243" y2="1243"/><line x1="155" x2="205" y1="1236" y2="1236"/></g></g><g class="c" data-nodo="3"><circle cx="497" cy="950" r="46" fill="#000" stroke="#d9d4c7" stroke-width="4"/><circle cx="497" cy="950" r="38" fill="none" stroke="#d9d4c7" stroke-width="1.4" opacity=".7"/><circle cx="497" cy="950" r="6" fill="none" stroke="#d9d4c7" stroke-width="1.6"/></g><g class="c" data-nodo="4"><circle cx="300" cy="690" r="46" fill="#000" stroke="#d9d4c7" stroke-width="4"/><circle cx="300" cy="690" r="38" fill="none" stroke="#d9d4c7" stroke-width="1.4" opacity=".7"/></g><g class="c" data-nodo="4"><rect x="268" y="520" width="64" height="85" fill="#000" stroke="#d9d4c7" stroke-width="4"/><g stroke="#d9d4c7" stroke-width="1.6"><line x1="275" x2="325" y1="528" y2="528"/><line x1="275" x2="325" y1="535" y2="535"/><line x1="275" x2="325" y1="542" y2="542"/><line x1="275" x2="325" y1="549" y2="549"/><line x1="275" x2="325" y1="556" y2="556"/><line x1="275" x2="325" y1="563" y2="563"/></g></g><g class="c" data-nodo="5"><circle cx="497" cy="1290" r="46" fill="#000" stroke="#d9d4c7" stroke-width="4"/><circle cx="497" cy="1290" r="38" fill="none" stroke="#d9d4c7" stroke-width="1.4" opacity=".7"/><circle cx="497" cy="1290" r="6" fill="none" stroke="#d9d4c7" stroke-width="1.6"/></g><g class="c" data-nodo="5"><rect x="465" y="1390" width="64" height="80" fill="#000" stroke="#d9d4c7" stroke-width="4"/><g stroke="#d9d4c7" stroke-width="1.6"><line x1="472" x2="522" y1="1462" y2="1462"/><line x1="472" x2="522" y1="1455" y2="1455"/><line x1="472" x2="522" y1="1448" y2="1448"/><line x1="472" x2="522" y1="1441" y2="1441"/><line x1="472" x2="522" y1="1434" y2="1434"/><line x1="472" x2="522" y1="1427" y2="1427"/></g></g></g>
-</g>
-<g id="luz-entrada"><circle cx="497" cy="1430" r="20" fill="#ffe9b0" opacity=".18"/><circle cx="497" cy="1430" r="5" fill="#ffe9b0"/></g>
-</svg>
-</div>
-<div class="panel">
-<p>Pulsa un nodo para encenderlo o apagarlo y probar cómo crece el mapa.</p>
-<button data-n="1" aria-pressed="false">Nodo 1: Química</button>
-<button data-n="2" aria-pressed="false">Nodo 2: Física</button>
-<button data-n="3" aria-pressed="false">Nodo 3: Edificio Central</button>
-<button data-n="4" aria-pressed="false">Nodo 4: Hidráulica, Civil y Geofísica</button>
-<button data-n="5" aria-pressed="false">Nodo 5: Entrada (Pajarera)</button>
-<button id="todos">Encender todo</button>
-<button id="nada">Apagar todo</button>
-<label><input type="checkbox" id="viejo" checked> Estilo de plano antiguo</label>
-</div>
-<script>
-const svg=document.querySelector('.mapa svg'),on=new Set(),btns=[...document.querySelectorAll('button[data-n]')];
-function pintar(){svg.dataset.encendidos=[...on].join(' ');btns.forEach(b=>b.setAttribute('aria-pressed',on.has(b.dataset.n)))}
-btns.forEach(b=>b.onclick=()=>{on.has(b.dataset.n)?on.delete(b.dataset.n):on.add(b.dataset.n);pintar()});
-todos.onclick=()=>{[1,2,3,4,5].forEach(n=>on.add(String(n)));pintar()};
-nada.onclick=()=>{on.clear();pintar()};
-viejo.onchange=()=>svg.classList.toggle('envejecido',viejo.checked);
-</script></body></html>
+      <defs>
+        <filter id="envejecido" x="-2%" y="-2%" width="104%" height="104%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="7" result="r" />
+          <feDisplacementMap in="SourceGraphic" in2="r" scale="3" xChannelSelector="R" yChannelSelector="G"
+            result="d" />
+          <feGaussianBlur in="d" stdDeviation="1.1" />
+        </filter>
+      </defs>
+      <style>
+        svg {
+          --apagado: .03
+        }
+
+        [data-nodo] {
+          opacity: var(--apagado);
+          transition: opacity 1.6s ease, filter 1.6s ease
+        }
+
+        [data-nodo].i {
+          opacity: 0
+        }
+
+        svg[data-encendidos~="1"] [data-nodo="1"] {
+          opacity: 1
+        }
+
+        svg[data-encendidos~="1"] [data-nodo="1"].o,
+        svg[data-encendidos~="1"] [data-nodo="1"].c {
+          filter: drop-shadow(0 0 5px rgba(255, 235, 185, .55))
+        }
+
+        svg[data-encendidos~="2"] [data-nodo="2"] {
+          opacity: 1
+        }
+
+        svg[data-encendidos~="2"] [data-nodo="2"].o,
+        svg[data-encendidos~="2"] [data-nodo="2"].c {
+          filter: drop-shadow(0 0 5px rgba(255, 235, 185, .55))
+        }
+
+        svg[data-encendidos~="3"] [data-nodo="3"] {
+          opacity: 1
+        }
+
+        svg[data-encendidos~="3"] [data-nodo="3"].o,
+        svg[data-encendidos~="3"] [data-nodo="3"].c {
+          filter: drop-shadow(0 0 5px rgba(255, 235, 185, .55))
+        }
+
+        svg[data-encendidos~="4"] [data-nodo="4"] {
+          opacity: 1
+        }
+
+        svg[data-encendidos~="4"] [data-nodo="4"].o,
+        svg[data-encendidos~="4"] [data-nodo="4"].c {
+          filter: drop-shadow(0 0 5px rgba(255, 235, 185, .55))
+        }
+
+        svg[data-encendidos~="5"] [data-nodo="5"] {
+          opacity: 1
+        }
+
+        svg[data-encendidos~="5"] [data-nodo="5"].o,
+        svg[data-encendidos~="5"] [data-nodo="5"].c {
+          filter: drop-shadow(0 0 5px rgba(255, 235, 185, .55))
+        }
+
+        /* Cuando los cinco nodos están encendidos, las líneas pasan a tonos verdes. */
+        svg[data-encendidos~="1"][data-encendidos~="2"][data-encendidos~="3"][data-encendidos~="4"][data-encendidos~="5"] #facultad {
+          stroke: #a8f0b5
+        }
+
+        svg[data-encendidos~="1"][data-encendidos~="2"][data-encendidos~="3"][data-encendidos~="4"][data-encendidos~="5"] #tuneles [stroke="#d9d4c7"] {
+          stroke: #35e879 !important
+        }
+
+        svg.envejecido #facultad,
+        svg.envejecido #tuneles {
+          filter: url(#envejecido)
+        }
+
+        #facultad {
+          opacity: .55
+        }
+
+        #luz-entrada {
+          animation: pulso 2.6s ease-in-out infinite
+        }
+
+        @keyframes pulso {
+
+          0%,
+          100% {
+            opacity: .5
+          }
+
+          50% {
+            opacity: 1
+          }
+        }
+
+        @media (prefers-reduced-motion:reduce) {
+          #luz-entrada {
+            animation: none
+          }
+
+          [data-nodo] {
+            transition: none
+          }
+        }
+      </style>
+      <rect width="1024" height="1536" fill="#050505" />
+      <g id="facultad" fill="none" stroke="#7c7a72" stroke-width="2.2" stroke-linejoin="round">
+        <path
+          d="M45,72 L262,72 L262,120 L250,120 L250,242 L682,242 L682,65 L960,62 L960,470 L872,470 L872,165 L766,165 L766,375 L682,375 L682,322 L552,322 L552,565 L447,565 L447,322 L404,322 L303,328 L300,340 L210,347 L210,362 L186,364 A40,40 0 0 1 107,364 L84,362 L84,346 L45,346 L50,303 L53,118 L45,118 Z" />
+        <path d="M404,242 L404,322" />
+        <path d="M385,90 L583,90 L583,217 L515,217 L515,170 L455,170 L455,217 L385,217 Z" />
+        <path
+          d="M247,445 L380,445 L380,562 L408,578 L408,728 L380,740 L380,780 L305,783 L303,803 Q230,822 170,827 Q125,825 123,790 L123,774 L100,772 L100,700 L72,700 L72,600 L100,598 L100,520 L130,517 L130,485 L222,480 L222,498 L247,498 Z" />
+        <path d="M606,566 L752,566 L752,688 L865,688 L865,566 L958,563 L958,862 L865,862 L865,775 L606,775 Z" />
+        <path
+          d="M427,826 L571,826 L571,886 L588,890 L636,940 L636,975 L590,1020 L590,1078 L550,1078 L550,1062 L442,1062 L442,1078 L402,1078 L402,1020 L358,975 L358,940 L408,890 L427,886 Z" />
+        <path
+          d="M112,918 L195,918 L195,1010 L262,1010 L262,1076 A47,47 0 0 1 262,1168 L262,1215 L195,1215 L195,1312 L112,1312 L112,1215 L48,1215 L48,1012 L112,1010 Z" />
+        <path
+          d="M800,918 L888,918 L888,1010 L952,1010 L952,1215 L888,1215 L888,1312 L800,1312 L800,1215 L738,1215 L738,1168 A47,47 0 0 1 738,1076 L738,1010 L800,1010 Z" />
+        <path
+          d="M110,1360 L258,1360 L258,1398 L487,1398 L487,1385 L411,1385 L411,1337 L487,1337 L487,1323 L528,1323 L528,1337 L606,1337 L606,1385 L528,1385 L528,1398 L755,1398 L755,1360 L905,1360 L905,1495 L110,1495 Z" />
+      </g>
+      <g id="tuneles">
+        <g id="paredes">
+          <path class="o" data-nodo="1" d="M543,950 L595,950 L595,1040 L820,1040 L820,1075" fill="none" stroke="#d9d4c7"
+            stroke-width="26" />
+          <path class="o" data-nodo="1" d="M820,1155 L820,1195" fill="none" stroke="#d9d4c7" stroke-width="26" />
+          <path class="o" data-nodo="2" d="M451,950 L400,950 L400,1040 L180,1040 L180,1075" fill="none" stroke="#d9d4c7"
+            stroke-width="26" />
+          <path class="o" data-nodo="2" d="M180,1155 L180,1195" fill="none" stroke="#d9d4c7" stroke-width="26" />
+          <path class="o" data-nodo="4" d="M497,904 L497,855 L300,855 L300,740" fill="none" stroke="#d9d4c7"
+            stroke-width="26" />
+          <path class="o" data-nodo="4" d="M300,644 L300,605" fill="none" stroke="#d9d4c7" stroke-width="26" />
+          <path class="o" data-nodo="5" d="M497,996 L497,1248" fill="none" stroke="#d9d4c7" stroke-width="26" />
+          <path class="o" data-nodo="5" d="M497,1336 L497,1390" fill="none" stroke="#d9d4c7" stroke-width="26" />
+        </g>
+        <g id="suelo">
+          <path class="i" data-nodo="1" d="M543,950 L595,950 L595,1040 L820,1040 L820,1075" fill="none" stroke="#000"
+            stroke-width="18" />
+          <path class="i" data-nodo="1" d="M820,1155 L820,1195" fill="none" stroke="#000" stroke-width="18" />
+          <path class="i" data-nodo="2" d="M451,950 L400,950 L400,1040 L180,1040 L180,1075" fill="none" stroke="#000"
+            stroke-width="18" />
+          <path class="i" data-nodo="2" d="M180,1155 L180,1195" fill="none" stroke="#000" stroke-width="18" />
+          <path class="i" data-nodo="4" d="M497,904 L497,855 L300,855 L300,740" fill="none" stroke="#000"
+            stroke-width="18" />
+          <path class="i" data-nodo="4" d="M300,644 L300,605" fill="none" stroke="#000" stroke-width="18" />
+          <path class="i" data-nodo="5" d="M497,996 L497,1248" fill="none" stroke="#000" stroke-width="18" />
+          <path class="i" data-nodo="5" d="M497,1336 L497,1390" fill="none" stroke="#000" stroke-width="18" />
+        </g>
+        <g id="camaras">
+          <g class="c" data-nodo="1">
+            <circle cx="820" cy="1115" r="46" fill="#000" stroke="#d9d4c7" stroke-width="4" />
+            <circle cx="820" cy="1115" r="38" fill="none" stroke="#d9d4c7" stroke-width="1.4" opacity=".7" />
+          </g>
+          <g class="c" data-nodo="1">
+            <rect x="788" y="1195" width="64" height="84" fill="#000" stroke="#d9d4c7" stroke-width="4" />
+            <g stroke="#d9d4c7" stroke-width="1.6">
+              <line x1="795" x2="845" y1="1271" y2="1271" />
+              <line x1="795" x2="845" y1="1264" y2="1264" />
+              <line x1="795" x2="845" y1="1257" y2="1257" />
+              <line x1="795" x2="845" y1="1250" y2="1250" />
+              <line x1="795" x2="845" y1="1243" y2="1243" />
+              <line x1="795" x2="845" y1="1236" y2="1236" />
+            </g>
+          </g>
+          <g class="c" data-nodo="2">
+            <circle cx="180" cy="1115" r="46" fill="#000" stroke="#d9d4c7" stroke-width="4" />
+            <circle cx="180" cy="1115" r="38" fill="none" stroke="#d9d4c7" stroke-width="1.4" opacity=".7" />
+          </g>
+          <g class="c" data-nodo="2">
+            <rect x="148" y="1195" width="64" height="84" fill="#000" stroke="#d9d4c7" stroke-width="4" />
+            <g stroke="#d9d4c7" stroke-width="1.6">
+              <line x1="155" x2="205" y1="1271" y2="1271" />
+              <line x1="155" x2="205" y1="1264" y2="1264" />
+              <line x1="155" x2="205" y1="1257" y2="1257" />
+              <line x1="155" x2="205" y1="1250" y2="1250" />
+              <line x1="155" x2="205" y1="1243" y2="1243" />
+              <line x1="155" x2="205" y1="1236" y2="1236" />
+            </g>
+          </g>
+          <g class="c" data-nodo="3">
+            <circle cx="497" cy="950" r="46" fill="#000" stroke="#d9d4c7" stroke-width="4" />
+            <circle cx="497" cy="950" r="38" fill="none" stroke="#d9d4c7" stroke-width="1.4" opacity=".7" />
+            <circle cx="497" cy="950" r="6" fill="none" stroke="#d9d4c7" stroke-width="1.6" />
+          </g>
+          <g class="c" data-nodo="4">
+            <circle cx="300" cy="690" r="46" fill="#000" stroke="#d9d4c7" stroke-width="4" />
+            <circle cx="300" cy="690" r="38" fill="none" stroke="#d9d4c7" stroke-width="1.4" opacity=".7" />
+          </g>
+          <g class="c" data-nodo="4">
+            <rect x="268" y="520" width="64" height="85" fill="#000" stroke="#d9d4c7" stroke-width="4" />
+            <g stroke="#d9d4c7" stroke-width="1.6">
+              <line x1="275" x2="325" y1="528" y2="528" />
+              <line x1="275" x2="325" y1="535" y2="535" />
+              <line x1="275" x2="325" y1="542" y2="542" />
+              <line x1="275" x2="325" y1="549" y2="549" />
+              <line x1="275" x2="325" y1="556" y2="556" />
+              <line x1="275" x2="325" y1="563" y2="563" />
+            </g>
+          </g>
+          <g class="c" data-nodo="5">
+            <circle cx="497" cy="1290" r="46" fill="#000" stroke="#d9d4c7" stroke-width="4" />
+            <circle cx="497" cy="1290" r="38" fill="none" stroke="#d9d4c7" stroke-width="1.4" opacity=".7" />
+            <circle cx="497" cy="1290" r="6" fill="none" stroke="#d9d4c7" stroke-width="1.6" />
+          </g>
+          <g class="c" data-nodo="5">
+            <rect x="465" y="1390" width="64" height="80" fill="#000" stroke="#d9d4c7" stroke-width="4" />
+            <g stroke="#d9d4c7" stroke-width="1.6">
+              <line x1="472" x2="522" y1="1462" y2="1462" />
+              <line x1="472" x2="522" y1="1455" y2="1455" />
+              <line x1="472" x2="522" y1="1448" y2="1448" />
+              <line x1="472" x2="522" y1="1441" y2="1441" />
+              <line x1="472" x2="522" y1="1434" y2="1434" />
+              <line x1="472" x2="522" y1="1427" y2="1427" />
+            </g>
+          </g>
+        </g>
+      </g>
+      <g id="luz-entrada">
+        <circle cx="497" cy="1430" r="20" fill="#ffe9b0" opacity=".18" />
+        <circle cx="497" cy="1430" r="5" fill="#ffe9b0" />
+      </g>
+    </svg>
+  </div>
+  <div class="panel">
+    <p>Pulsa un nodo para encenderlo o apagarlo y probar cómo crece el mapa.</p>
+    <button data-n="1" aria-pressed="false">Nodo 1: Química</button>
+    <button data-n="2" aria-pressed="false">Nodo 2: Física</button>
+    <button data-n="3" aria-pressed="false">Nodo 3: Edificio Central</button>
+    <button data-n="4" aria-pressed="false">Nodo 4: Hidráulica, Civil y Geofísica</button>
+    <button data-n="5" aria-pressed="false">Nodo 5: Entrada (Pajarera)</button>
+    <button id="todos">Encender todo</button>
+    <button id="nada">Apagar todo</button>
+    <label><input type="checkbox" id="viejo" checked> Estilo de plano antiguo</label>
+  </div>
+  <form action="" method="post">
+    <h2>Únete a la Búsqueda</h2>
+    <p>
+      Regístrate con un nombre de usuario, puede ser personal o de un grupo. Sólo te identificaras con el nombre de
+      usuario, sin necesidad de compartir tu correo o nombre real.
+    </p>
+    <fieldset>
+      <label for="username">Ingresa tu nombre de usuario:</label>
+      <input id="username" type="text" name="username">
+    </fieldset>
+    <fieldset>
+      <p>
+        ¿Deseas que tu nombre de usuario pueda ser publicado? (Por ejemplo, en ránkings de los usuarios más
+        activos del juego)
+      </p>
+      <input id="permiso" type="checkbox" name="permiso">
+      <label for="permiso">Autorizo que este nombre de usuario aparezca en páginas públicas (opcional)</label>
+    </fieldset>
+    <button>Enviar</button>
+  </form>
+  <script>
+    const svg = document.querySelector('.mapa svg'), on = new Set(), btns = [...document.querySelectorAll('button[data-n]')];
+    function pintar() { svg.dataset.encendidos = [...on].join(' '); btns.forEach(b => b.setAttribute('aria-pressed', on.has(b.dataset.n))) }
+    btns.forEach(b => b.onclick = () => { on.has(b.dataset.n) ? on.delete(b.dataset.n) : on.add(b.dataset.n); pintar() });
+    todos.onclick = () => { [1, 2, 3, 4, 5].forEach(n => on.add(String(n))); pintar() };
+    nada.onclick = () => { on.clear(); pintar() };
+    viejo.onchange = () => svg.classList.toggle('envejecido', viejo.checked);
+  </script>
+</body>
+
+</html>
