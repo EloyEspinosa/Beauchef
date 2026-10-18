@@ -155,6 +155,7 @@ form,
 /* Pista */
 .pista {
     padding-top: 18px;
+    width: min(560px, 100%);
     border-top: 1px dashed #3a382f
 }
 .pista .etiqueta {
