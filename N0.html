@@ -308,12 +308,28 @@
     </form>
   </div>
   <script>
+    // TODO: tomar informacíon de excel publicado
     const svg = document.querySelector('.mapa svg'), on = new Set(), btns = [...document.querySelectorAll('button[data-n]')];
-    function pintar() { svg.dataset.encendidos = [...on].join(' '); btns.forEach(b => b.setAttribute('aria-pressed', on.has(b.dataset.n))) }
+    function pintar() {
+      svg.dataset.encendidos = [...on].join(' ');
+      btns.forEach(b => b.setAttribute('aria-pressed', on.has(b.dataset.n)))
+    }
     btns.forEach(b => b.onclick = () => { on.has(b.dataset.n) ? on.delete(b.dataset.n) : on.add(b.dataset.n); pintar() });
-    todos.onclick = () => { [1, 2, 3, 4, 5].forEach(n => on.add(String(n))); pintar() };
-    nada.onclick = () => { on.clear(); pintar() };
-    viejo.onchange = () => svg.classList.toggle('envejecido', viejo.checked);
+
+    const form = document.querySelector('form');
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      const username = form.username.value.trim().toLowerCase();
+      if (!username) return;
+      const data = new FormData();
+      data.append('entry.491286071', username)
+      if (form.permiso.checked) data.append('entry.887223705', 'si')
+      await fetch('https://docs.google.com/forms/d/e/1FAIpQLScxYcImJv9_U4jmaB3Trth28m4rEBAxarH-VRDaRo4kZ8N23w/formResponse', {
+        method: 'POST', mode: "no-cors", body: data
+      });
+      form.innerHTML = '<h2>Registro efectuado</h2><div class="fantasma"><p>nos vemos pronto...</p></div>';
+    });
+    "https://docs.google.com/forms/d/e/1FAIpQLScxYcImJv9_U4jmaB3Trth28m4rEBAxarH-VRDaRo4kZ8N23w/viewform?usp=pp_url&entry.491286071=admin&entry.887223705=si"
   </script>
 </body>
 
