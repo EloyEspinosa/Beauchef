@@ -299,6 +299,10 @@
       </fieldset>
       <button>Enviar</button>
     </form>
+    <div class="lista">
+      <h2>Usuarios Más Activos</h2>
+      <ol id="ranking"></ol>
+    </div>
   </div>
   <div class="pista">
     <p class="etiqueta">Primera pista</p>
@@ -308,14 +312,6 @@
     </p>
   </div>
   <script>
-    // TODO: tomar informacíon de excel publicado
-    const svg = document.querySelector('.mapa svg'), on = new Set(), btns = [...document.querySelectorAll('button[data-n]')];
-    function pintar() {
-      svg.dataset.encendidos = [...on].join(' ');
-      btns.forEach(b => b.setAttribute('aria-pressed', on.has(b.dataset.n)))
-    }
-    btns.forEach(b => b.onclick = () => { on.has(b.dataset.n) ? on.delete(b.dataset.n) : on.add(b.dataset.n); pintar() });
-
     const form = document.querySelector('form');
     form.addEventListener('submit', async e => {
       e.preventDefault();
@@ -329,7 +325,37 @@
       });
       form.innerHTML = '<h2>Registro efectuado</h2><div class="fantasma"><p>nos vemos pronto...</p></div>';
     });
-    "https://docs.google.com/forms/d/e/1FAIpQLScxYcImJv9_U4jmaB3Trth28m4rEBAxarH-VRDaRo4kZ8N23w/viewform?usp=pp_url&entry.491286071=admin&entry.887223705=si"
+
+    const URL_EXEC = 'https://script.google.com/macros/s/AKfycbyQdV2jBFNyTV53gH-cZ4pWFwvyzVG-Ixjv7jdnIkvTS9vfE_5mOhrflKRkcd3DfwSB/exec';
+    async function actualizarRanking() {
+      const { ranking, contador } = await (await fetch(URL_EXEC)).json();
+      document.querySelector('#ranking').replaceChildren(
+        ...ranking.slice(1).map(([usuario, nodos]) => {
+          const li = document.createElement('li');
+          const nombre = document.createElement('span');
+          nombre.className = 'nombre';
+          nombre.textContent = usuario;
+          const avance = document.createElement('span');
+          avance.className = 'nodos';
+          avance.textContent = `${nodos} sobres encontrados`;
+          if (Number(nodos) >= 5) li.classList.add('completo');
+          li.append(nombre, avance);
+          return li;
+        })
+      );
+
+      var nodos = '', i = 1;
+      contador.slice(1).forEach(([nodo, n]) => {
+        if (n > 0) nodos += `${i} `;
+        i++;
+      });
+      document.querySelector('svg').setAttribute('data-encendidos', nodos.trimEnd());
+
+      if (nodos === '1 2 3 4 5 ') {
+        document.querySelector('.pista').innerHTML = '<p id="victoria">Historia encontrada. Gracias por tu participación</p><p>Si tienes tiempo, responde la siguiente encuesta:</p><p>[INSERTAR LINK A ENCUESTA DE SATISFACCIÓN]</p>';
+      }
+    }
+    actualizarRanking(); setInterval(actualizarRanking, 60000);
   </script>
 </body>
 

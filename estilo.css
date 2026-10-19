@@ -176,7 +176,7 @@ form,
 /* ==========================================================
    FORMULARIO DE INSCRIPCIÓN (ficha de registro)
    ========================================================== */
-form {
+form, .lista {
     position: relative;
     padding: 32px 30px 34px;
     border: 1px solid #3a382f;
@@ -204,7 +204,7 @@ form::after {
     border-left: 0;
     border-top: 0
 }
-form h2 {
+form h2, .lista h2 {
     display: flex;
     align-items: center;
     gap: 14px;
@@ -297,18 +297,75 @@ form button:hover {
     box-shadow: 0 0 14px rgba(255, 233, 176, .35)
 }
 
-/* Aviso de ficción */
-.aviso {
-    margin-block: 0;
-    font-size: .78rem;
-    text-align: center;
-    color: #6f6c61
-}
-
 @media (max-width: 480px) {
     form { padding: 26px 20px 28px }
 }
 @media (prefers-reduced-motion: reduce) {
     .fantasma p { opacity: 1; animation: none }
     form button, form input[type="text"] { transition: none }
+}
+
+#ranking {
+    margin: 20px 0 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: puesto;
+    max-height: 130px;           /* con muchos jugadores, la lista se desplaza */
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #5b584e transparent
+}
+#ranking li {
+    counter-increment: puesto;
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    padding: 10px 0;
+    border-bottom: 1px dashed #2f2d25;
+    font-family: "Courier New", monospace;
+    color: #d9d4c7
+}
+#ranking li::before {
+    content: counter(puesto, decimal-leading-zero);
+    flex: none;
+    width: 2ch;
+    font-size: .8rem;
+    letter-spacing: .14em;
+    color: #6f6c61
+}
+#ranking .nombre {
+    display: flex;
+    flex: 1;
+    min-width: 0;
+    overflow-wrap: anywhere
+}
+#ranking .nombre::after {            /* línea de puntos hasta el avance */
+    content: "";
+    flex: 1;
+    min-width: 12px;
+    margin-left: 10px;
+    border-bottom: 1px dotted #3a382f;
+    transform: translateY(-.3em)
+}
+#ranking .nodos {
+    flex: none;
+    letter-spacing: .1em;
+    color: #b9b4a6
+}
+
+/* Los tres primeros brillan; quien completó el juego se vuelve verde, como el plano */
+#ranking li:nth-child(-n+3) .nombre { color: #ffe9b0; text-shadow: 0 0 10px rgba(255, 233, 176, .3) }
+#ranking li:nth-child(-n+3)::before { color: #ffe9b0 }
+#ranking li.completo .nodos, #victoria { color: #35e879; text-shadow: 0 0 8px rgba(53, 232, 121, .35) }
+
+/* Lista vacía */
+#ranking:empty::before {
+    content: "Aún nadie ha dejado huella…";
+    display: block;
+    font-style: italic;
+    color: #6f6c61
+}
+
+@media (max-width: 480px) {
+    .ranking-caja { padding: 26px 20px 28px }
 }
