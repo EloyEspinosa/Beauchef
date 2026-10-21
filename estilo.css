@@ -69,6 +69,9 @@ body::before {
 body::after {
     background: radial-gradient(ellipse at center, transparent 55%, rgba(0, 0, 0, .55) 100%)
 }
+.link {
+    color: cornflowerblue;
+}
 
 /* ==========================================================
    INTRODUCCIÓN
@@ -155,7 +158,7 @@ form,
 /* Pista */
 .pista {
     padding-top: 18px;
-    width: min(560px, 100%);
+    width: 55%;
     border-top: 1px dashed #3a382f
 }
 .pista .etiqueta {
